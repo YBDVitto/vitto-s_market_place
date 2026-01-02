@@ -1,7 +1,9 @@
 import { Sequelize } from 'sequelize';
 import { env } from '../env.js';
-const sequelize = new Sequelize('portfolio_project', 'root', env.DB_PASSWORD, {
+console.log('merda', env.DB_NAME);
+const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASSWORD, {
     dialect: 'mysql',
-    host: 'localhost'
+    host: env.DB_HOST,
+    port: Number(env.DB_PORT) || 3306
 });
 export default sequelize;
