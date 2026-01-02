@@ -41,7 +41,8 @@ Message.init(
     },
     {
         sequelize,
-        modelName: 'Message'
+        modelName: 'Message',
+        tableName: 'messages'
     }
 )
 

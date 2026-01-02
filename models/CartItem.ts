@@ -43,7 +43,8 @@ CartItem.init(
     },
     {
         sequelize,
-        modelName: 'CartItem'
+        modelName: 'CartItem',
+        tableName: 'cartitems'
     }
 )
 

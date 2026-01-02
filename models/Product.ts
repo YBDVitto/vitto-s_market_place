@@ -48,7 +48,8 @@ Product.init(
     },
     {
         sequelize,
-        modelName: 'Product'
+        modelName: 'Product',
+        tableName: 'products'
     }
 )
 

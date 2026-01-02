@@ -34,8 +34,8 @@ Chat.init(
     },
     {
         sequelize,
-        modelName: 'Chat'
-
+        modelName: 'Chat',
+        tableName: 'chats'
     }
 )
 
