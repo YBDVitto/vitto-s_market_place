@@ -115,14 +115,15 @@ io.on('connection', async (socket) => {
         socket.emit('message_sent', newMessage);
     });
 });
-if (env.NODE_ENV !== 'production') {
-    sequelize.sync()
-        .then(() => {
+sequelize.sync({ alter: true })
+    .then(() => {
+    console.log('Database syncronized correctly.');
+    if (process.env.NODE_ENV !== 'production') {
         server.listen(3000, () => {
-            console.log('Server listening on port 3000');
+            console.log("Server listening on port 3000.");
         });
-    })
-        .catch(err => {
-        console.log(err);
-    });
-}
+    }
+})
+    .catch(err => {
+    console.error('Error while trying to syncronize the database: ', err);
+});
