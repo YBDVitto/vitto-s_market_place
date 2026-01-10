@@ -55,7 +55,7 @@ const renderValues = (user) => {
     `
     document.getElementById('logout-btn').addEventListener('click', () => {
         localStorage.removeItem('token')
-        window.location.href='/public-homepage'
+        window.location.href='/index'
     })
 
     document.getElementById('edit-personal-data-btn').addEventListener('click', () => {

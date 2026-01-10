@@ -58,13 +58,13 @@ export const renderNavbar = async () => {
             <div class="flex justify-between items-center h-16">
                 
                 <div class="flex-shrink-0">
-                    <a href="/public-homepage" class="text-2xl font-extrabold text-indigo-400 hover:text-indigo-800 transition duration-300 tracking-wide uppercase">
+                    <a href="/index" class="text-2xl font-extrabold text-indigo-400 hover:text-indigo-800 transition duration-300 tracking-wide uppercase">
                         Vitto's Marketplace
                     </a>
                 </div>
 
                 <div class="flex items-center justify-end space-x-6 font-medium">
-                    <a href="/public-homepage" class="text-gray-800 hover:text-black border-b-2 border-transparent hover:border-indigo-400 px-1 py-2 transition duration-200">Home</a>
+                    <a href="/index" class="text-gray-800 hover:text-black border-b-2 border-transparent hover:border-indigo-400 px-1 py-2 transition duration-200">Home</a>
                     
                     <a href="/html/auth/login" class="px-4 py-2 text-sm font-semibold rounded-full text-indigo-400 border border-indigo-400 hover:bg-indigo-900 transition duration-200">
                         Login

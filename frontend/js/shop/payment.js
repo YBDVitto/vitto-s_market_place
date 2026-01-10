@@ -51,7 +51,7 @@ const paymentSuccess = async () => {
     btn.innerText = 'Return to home page'
     container.appendChild(btn)
     btn.addEventListener('click', () => {
-        window.location.href = '/public-homepage'
+        window.location.href = '/index'
     })
 }
 

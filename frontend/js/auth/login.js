@@ -19,7 +19,7 @@ const fetchLogin = async () => {
             // after login is successful
             localStorage.setItem('token', data.token)
             localStorage.setItem('userId', Number(data.userId));
-            window.location.href = '/public-homepage'
+            window.location.href = '/index'
             console.log('Login successful', data);
         } else {
             showErrors(data.errors)
