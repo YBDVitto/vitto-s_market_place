@@ -7,7 +7,7 @@ const token = localStorage.getItem('token')
 
 export const createCheckout = async (cartId) => {
     try {
-        const result = await fetch('http://localhost:3000/shop/checkout', {
+        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/checkout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ export const createCheckout = async (cartId) => {
 
 export const fetchCheckout = async (checkoutId, cartId) => {
     try {
-        const result = await fetch(`http://localhost:3000/shop/checkout?checkoutId=${checkoutId}&cartId=${cartId}`, {
+        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/checkout?checkoutId=${checkoutId}&cartId=${cartId}`, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token

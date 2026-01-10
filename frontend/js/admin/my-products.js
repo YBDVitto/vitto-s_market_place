@@ -112,7 +112,7 @@ const renderProducts = async (products) => {
 const fetchMyProducts = async () => {
     try {
         const token = localStorage.getItem('token')
-        const result = await fetch('http://localhost:3000/admin/my-products', {
+        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/admin/my-products', {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',

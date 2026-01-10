@@ -7,7 +7,7 @@ export const renderNavbar = async () => {
  if (!navContainer) return;
  
  // --- INIZIO LOGICA JS (NON MODIFICATA) ---
- const res = await fetch('http://localhost:3000/auth/validation-token', {
+ const res = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/auth/validation-token', {
   method: 'GET',
   headers: {
    'Authorization': 'Bearer ' + token
@@ -26,13 +26,13 @@ export const renderNavbar = async () => {
             <div class="flex justify-between items-center h-16">
                 
                 <div class="flex-shrink-0">
-                    <a href="/html/shop/public-homepage" class="text-2xl font-extrabold text-indigo-400 hover:text-indigo-800 transition duration-300 tracking-wide uppercase">
+                    <a href="/public-homepage" class="text-2xl font-extrabold text-indigo-400 hover:text-indigo-800 transition duration-300 tracking-wide uppercase">
                         Vitto's Marketplace
                     </a>
                 </div>
 
                 <div class="hidden md:flex items-center justify-end space-x-6 font-medium text-sm">
-                    <a href="/html/shop/public-homepage" class="text-gray-800 hover:text-black border-b-2 border-transparent hover:border-indigo-400 px-1 py-2 transition duration-200">Home</a>
+                    <a href="/public-homepage" class="text-gray-800 hover:text-black border-b-2 border-transparent hover:border-indigo-400 px-1 py-2 transition duration-200">Home</a>
                     <a href="/html/user/profile" class="text-gray-800 hover:text-black border-b-2 border-transparent hover:border-indigo-400 px-1 py-2 transition duration-200">Profile</a>
                     <a href="/html/admin/my-products" class="text-gray-800 hover:text-black border-b-2 border-transparent hover:border-indigo-400 px-1 py-2 transition duration-200">My Products</a>
                     <a href="/html/shop/cart" class="text-gray-800 hover:text-black border-b-2 border-transparent hover:border-indigo-400 px-1 py-2 transition duration-200">Cart</a>
@@ -58,13 +58,13 @@ export const renderNavbar = async () => {
             <div class="flex justify-between items-center h-16">
                 
                 <div class="flex-shrink-0">
-                    <a href="/html/shop/public-homepage" class="text-2xl font-extrabold text-indigo-400 hover:text-indigo-800 transition duration-300 tracking-wide uppercase">
+                    <a href="/public-homepage" class="text-2xl font-extrabold text-indigo-400 hover:text-indigo-800 transition duration-300 tracking-wide uppercase">
                         Vitto's Marketplace
                     </a>
                 </div>
 
                 <div class="flex items-center justify-end space-x-6 font-medium">
-                    <a href="/html/shop/public-homepage" class="text-gray-800 hover:text-black border-b-2 border-transparent hover:border-indigo-400 px-1 py-2 transition duration-200">Home</a>
+                    <a href="/public-homepage" class="text-gray-800 hover:text-black border-b-2 border-transparent hover:border-indigo-400 px-1 py-2 transition duration-200">Home</a>
                     
                     <a href="/html/auth/login" class="px-4 py-2 text-sm font-semibold rounded-full text-indigo-400 border border-indigo-400 hover:bg-indigo-900 transition duration-200">
                         Login

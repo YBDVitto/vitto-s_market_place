@@ -5,7 +5,7 @@ const fetchProducts = async () => {
     try {
         let result, data
         if(!token) {
-            result = await fetch('http://localhost:3000/shop/public-homepage', {
+            result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/public-homepage', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ const fetchProducts = async () => {
             data = await result.json()
             
         } else {
-            result = await fetch('http://localhost:3000/shop/public-homepage-logged', {
+            result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/public-homepage-logged', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
