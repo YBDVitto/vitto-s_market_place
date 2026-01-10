@@ -16,7 +16,7 @@ import { Server } from 'socket.io'
 import http from 'http'
 import { env } from './env.js'
 import jwt from 'jsonwebtoken'
-
+import cors from 'cors'
 
 // Serve per convertire un file URL in percorso locale
 import { fileURLToPath } from 'url'
@@ -25,6 +25,11 @@ import path from 'path'
 
 export const app = express()
 
+app.use(cors({
+    origin: "https://vitto-s-market-place.vercel.app",
+    methods: "*",
+    allowedHeaders: "*"
+}))
 // Questo converte l'URL del file corrente in un percorso reale
 const __filename = fileURLToPath(import.meta.url)
 
@@ -40,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'dist/util'), {
 
 app.use(express.json())
 
+/*
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.setHeader('Access-Control-Allow-Origin', '*') // in production conviene mettere solo il mio frontend come allowed per mandare richieste
     res.setHeader(
@@ -49,6 +55,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
     next()
 })
+*/
 
 
 
