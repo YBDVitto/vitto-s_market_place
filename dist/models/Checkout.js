@@ -19,6 +19,7 @@ Checkout.init({
     }
 }, {
     sequelize,
-    modelName: 'Checkout'
+    modelName: 'Checkout',
+    tableName: 'checkouts'
 });
 export default Checkout;

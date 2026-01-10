@@ -20,7 +20,7 @@ import jwt from 'jsonwebtoken';
 import { fileURLToPath } from 'url';
 // Serve per ottenere il nome della cartella (come __dirname)
 import path from 'path';
-const app = express();
+export const app = express();
 // Questo converte l'URL del file corrente in un percorso reale
 const __filename = fileURLToPath(import.meta.url);
 // Questo ottiene la cartella del file (come __dirname in CommonJS)
@@ -115,12 +115,14 @@ io.on('connection', async (socket) => {
         socket.emit('message_sent', newMessage);
     });
 });
-sequelize.sync()
-    .then(() => {
-    server.listen(3000, () => {
-        console.log('Server listening on port 3000');
+if (env.NODE_ENV !== 'production') {
+    sequelize.sync()
+        .then(() => {
+        server.listen(3000, () => {
+            console.log('Server listening on port 3000');
+        });
+    })
+        .catch(err => {
+        console.log(err);
     });
-})
-    .catch(err => {
-    console.log(err);
-});
+}

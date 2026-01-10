@@ -4,8 +4,8 @@ import { env } from '../env.js'
 const SES_CONFIG = {
     region: env.AWS_SES_REGION,
     credentials: {
-        accessKeyId: env.AWS_ACCESS_KEY_ID!,
-        secretAccessKey: env.AWS_SECRET_ACCESS_KEY!,
+        accessKeyId: env.MY_AWS_ACCESS_KEY_ID!,
+        secretAccessKey: env.MY_AWS_SECRET_ACCESS_KEY!,
     },
 }
 
@@ -127,7 +127,7 @@ export const sendEmail = async (
         const result = await AWS_SES.send(command)
         console.log('Email sent:', result.MessageId)
     } catch (err: any) {
-        console.log(env.AWS_ACCESS_KEY_ID)
+        console.log(env.MY_AWS_ACCESS_KEY_ID)
         console.log(env.AWS_S3_REGION)
         console.error('Email sending failed:', err.message)
     }

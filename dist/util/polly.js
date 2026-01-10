@@ -3,8 +3,8 @@ import { env } from '../env.js';
 const polly = new PollyClient({
     region: env.AWS_S3_REGION,
     credentials: {
-        accessKeyId: env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: env.AWS_SECRET_ACCESS_KEY
+        accessKeyId: env.MY_AWS_ACCESS_KEY_ID,
+        secretAccessKey: env.MY_AWS_SECRET_ACCESS_KEY
     }
 });
 export const synthetizeSpeech = async (descriptionText, voiceId) => {

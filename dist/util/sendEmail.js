@@ -3,8 +3,8 @@ import { env } from '../env.js';
 const SES_CONFIG = {
     region: env.AWS_SES_REGION,
     credentials: {
-        accessKeyId: env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+        accessKeyId: env.MY_AWS_ACCESS_KEY_ID,
+        secretAccessKey: env.MY_AWS_SECRET_ACCESS_KEY,
     },
 };
 const AWS_SES = new SESClient(SES_CONFIG);
@@ -112,7 +112,7 @@ export const sendEmail = async (recipientEmail, name, type, token = '') => {
         console.log('Email sent:', result.MessageId);
     }
     catch (err) {
-        console.log(env.AWS_ACCESS_KEY_ID);
+        console.log(env.MY_AWS_ACCESS_KEY_ID);
         console.log(env.AWS_S3_REGION);
         console.error('Email sending failed:', err.message);
     }
