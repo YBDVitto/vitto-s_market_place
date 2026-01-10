@@ -55,7 +55,7 @@ const renderValues = (user) => {
     `
     document.getElementById('logout-btn').addEventListener('click', () => {
         localStorage.removeItem('token')
-        window.location.href='/html/shop/public-homepage'
+        window.location.href='/index'
     })
 
     document.getElementById('edit-personal-data-btn').addEventListener('click', () => {
@@ -67,7 +67,7 @@ const renderValues = (user) => {
 
 
 const fetchUser = async () => {
-    const result = await fetch('http://localhost:3000/user/profile', {
+    const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/user/profile', {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + token

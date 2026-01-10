@@ -7,7 +7,7 @@ console.log(from)
 
 const getUserInfo = async () => {
     try {
-        const result = await fetch(`http://localhost:3000/shop/user-info?userId=${requestedUserId}`, {
+        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/user-info?userId=${requestedUserId}`, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token

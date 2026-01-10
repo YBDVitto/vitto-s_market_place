@@ -4,7 +4,7 @@ const fetchLogin = async () => {
     const email = document.getElementById("email")
     const password = document.getElementById("password")
     try {
-        const result = await fetch('http://localhost:3000/auth/login', {
+        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ const fetchLogin = async () => {
             // after login is successful
             localStorage.setItem('token', data.token)
             localStorage.setItem('userId', Number(data.userId));
-            window.location.href = '/html/shop/public-homepage'
+            window.location.href = '/index'
             console.log('Login successful', data);
         } else {
             showErrors(data.errors)

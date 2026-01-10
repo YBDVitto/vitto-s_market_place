@@ -4,7 +4,7 @@ const fetchReset = async () => {
     const email = document.getElementById('email')
     try {
 
-        const result = await fetch('http://localhost:3000/auth/reset', {
+        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/auth/reset', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

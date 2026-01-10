@@ -6,7 +6,7 @@ const token = localStorage.getItem('token')
 
 const fetchDeleteProduct = async (prodId) => {
     try {
-        const result = await fetch(`http://localhost:3000/admin/delete-product`, {
+        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/admin/delete-product`, {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token,
@@ -100,7 +100,7 @@ const productSection = (product) => {
 
 const getProductToDelete = async () => {
     try {
-        const result = await fetch(`http://localhost:3000/admin/delete-product?prodId=${prodId}`, {
+        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/admin/delete-product?prodId=${prodId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

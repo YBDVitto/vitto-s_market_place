@@ -7,6 +7,7 @@ const sequelize = new Sequelize(isProduction ? (env.DB_NAME || 'test') : 'portfo
     port: isProduction ? Number(env.DB_PORT) || 4000 : 3306,
     dialectOptions: isProduction ? {
         ssl: {
+            require: true,
             rejectUnauthorized: true,
         }
     } : {},

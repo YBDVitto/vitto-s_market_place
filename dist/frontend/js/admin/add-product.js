@@ -5,7 +5,7 @@ const fetchAddProduct = async () => {
     const formData = new FormData(form); // raccoglie automaticamente tutti i campi del form, inclusi i file
     const token = localStorage.getItem('token')
     try {
-        const result = await fetch('http://localhost:3000/admin/add-product', {
+        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/admin/add-product', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token

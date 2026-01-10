@@ -12,7 +12,7 @@ export const setCheckoutState = (state) => {
 
 const updateQuantity = async (quantity, id) => {
     try {
-        const result = await fetch('http://localhost:3000/shop/cart/update', {
+        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/cart/update', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const updateQuantity = async (quantity, id) => {
 
 const deleteProduct = async (itemId) => {
     try {
-        const result = await fetch('http://localhost:3000/shop/cart/delete', {
+        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/cart/delete', {
             method: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + token,
@@ -208,7 +208,7 @@ export const renderValues = (data) => {
 
 export const addToCart = async (productId) => {
     try {
-        const result = await fetch ('http://localhost:3000/shop/cart/add', {
+        const result = await fetch ('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/cart/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -226,7 +226,7 @@ export const addToCart = async (productId) => {
 
 export const getCart = async () => {
     try {
-        const result = await fetch('http://localhost:3000/shop/cart', {
+        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/cart', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
