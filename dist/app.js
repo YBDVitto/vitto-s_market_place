@@ -16,6 +16,7 @@ import { Server } from 'socket.io';
 import http from 'http';
 import { env } from './env.js';
 import jwt from 'jsonwebtoken';
+let isSynced = false;
 // Serve per convertire un file URL in percorso locale
 import { fileURLToPath } from 'url';
 // Serve per ottenere il nome della cartella (come __dirname)
@@ -120,15 +121,21 @@ io.on('connection', async (socket) => {
         socket.emit('message_sent', newMessage);
     });
 });
-sequelize.sync({ alter: true })
-    .then(() => {
-    console.log('Database syncronized correctly.');
-    if (process.env.NODE_ENV !== 'production') {
-        server.listen(3000, () => {
-            console.log("Server listening on port 3000.");
-        });
+app.use(async (req, res, next) => {
+    if (!isSynced) {
+        try {
+            console.log('Starting DB synchronization...');
+            await sequelize.sync({ alter: true });
+            isSynced = true;
+            console.log('Database synchronized correctly.');
+            next();
+        }
+        catch (err) {
+            console.error('Error during sync:', err);
+            res.status(500).json({ error: "DB Sync Failed", details: err });
+        }
     }
-})
-    .catch(err => {
-    console.error('Error while trying to syncronize the database: ', err);
+    else {
+        next();
+    }
 });
