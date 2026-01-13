@@ -1,5 +1,3 @@
-
-
 const token = localStorage.getItem('token')
 
 export const fetchPayment = async (price, checkoutId, cartId) => {
@@ -92,5 +90,3 @@ window.addEventListener('DOMContentLoaded', () => {
         paymentFail()
     }
 })
-
-// CAPIRE PERCHE FUNZIONA COSI
