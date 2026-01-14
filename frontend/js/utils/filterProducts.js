@@ -8,7 +8,7 @@ const fetchFilteredProducts = async (category) => {
         })
         const data = await result.json()
         if(result.ok) {
-            renderProducts(data.products)
+            renderProducts(data.products, "")
         }
     } catch (err) {
         console.log(err)

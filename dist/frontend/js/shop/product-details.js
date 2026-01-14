@@ -75,7 +75,7 @@ const productSection = (product) => {
 const fetchProductDetails = async () => {
     try {
         const result = await fetch(
-            `http://localhost:3000/shop/product-details?prodId=${prodId}`,
+            `https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/product-details?prodId=${prodId}`,
             { method: 'GET', headers: { 'Content-Type': 'application/json' } }
         )
 
