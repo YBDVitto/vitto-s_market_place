@@ -378,9 +378,9 @@ export const postPayment = async (req: AuthRequest, res: Response, next: NextFun
                     },
                 ],
                 mode: 'payment',
-                success_url: `https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/pay/success-html?session_id={CHECKOUT_SESSION_ID}&checkoutId=${checkoutId}`,
+                success_url: `https://vitto-s-market-place.vercel.app/html/shop/pay/success-html?session_id={CHECKOUT_SESSION_ID}&checkoutId=${checkoutId}`,
                 // se il pagamento va a buon fine l'utente viene reindirizzato a success_url
-                cancel_url: `https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/pay/cancel-html?checkoutId=${checkoutId}`,
+                cancel_url: `https://vitto-s-market-place.vercel.app/html/shop/pay/cancel-html?checkoutId=${checkoutId}`,
                 // se NON va a buon fine, l'utente viene reindirizzato a cancel_url
                 metadata: { checkoutId: String(checkoutId) }
             })
