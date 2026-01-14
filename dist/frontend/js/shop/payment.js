@@ -84,9 +84,9 @@ const paymentFail = async () => {
 window.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname
 
-    if(path.includes('success-html')) {
+    if(path.includes('payment-success')) {
         paymentSuccess()
-    } else if (path.includes('cancel-html')) {
+    } else if (path.includes('payment-fail')) {
         paymentFail()
     }
 })
