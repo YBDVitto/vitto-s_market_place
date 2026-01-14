@@ -7,6 +7,7 @@ const fetchFilteredProducts = async (category) => {
             method: 'GET',
         })
         const data = await result.json()
+        console.log(data)
         if(result.ok) {
             renderProducts(data.products, false)
         }
