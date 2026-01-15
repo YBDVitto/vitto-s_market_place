@@ -221,7 +221,8 @@ export const getFilteredProducts = async (req, res, next) => {
         }
         return res.status(200).json({
             message: 'Filtered products fetched successfully.',
-            products: products
+            products: products,
+            category: category
         });
     }
     catch (err) {
