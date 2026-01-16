@@ -220,13 +220,18 @@ export const deleteFromCart = async (req: AuthRequest, res: Response, next: Next
 
 export const getFilteredProducts = async (req: AuthRequest, res: Response, next: NextFunction) => {
     const category = req.query.category
+    const requestUserId = req.user.id
+    console.log(requestUserId)
     try {
         const products = await Product.findAll({
             where: {
-                category: category
+                category: category,
+                userId: {
+                    [Op.ne]: requestUserId
+                }
             }
         })
-        if(!products) {
+        if(products.length === 0) {
             return res.status(400).json({
                 error: 'No products found!'
             })

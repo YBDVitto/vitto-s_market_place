@@ -155,7 +155,7 @@ io.on('connection', async (socket) => {
 
 })
 
-sequelize.sync({alter: true})
+sequelize.sync()
     .then(() => {
 
         console.log('Database syncronized correctly.')

@@ -18,7 +18,7 @@ router.delete('/cart/delete', isAuth, withAuth(deleteFromCart))
 
 router.get('/cart', isAuth, withAuth(getCart))
 
-router.get('/filter', withAuth(getFilteredProducts))
+router.get('/filter', isAuth, withAuth(getFilteredProducts))
 
 router.post('/checkout', isAuth, withAuth(postCreateCheckout))
 
