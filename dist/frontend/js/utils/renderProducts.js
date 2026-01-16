@@ -1,5 +1,6 @@
 import fetchFilteredProducts from '../utils/filterProducts.js'
 import { addToCart } from '../shop/cart.js'
+import { API_BASE_URL } from '../../../util/config.js'
 
 const token = localStorage.getItem('token')
 let myId
@@ -150,7 +151,7 @@ const renderProducts = async (products, fromUserPage) => {
     document.querySelectorAll('.polly-btn').forEach(button => {
         button.addEventListener('click', async (e) => {
             const productId = e.target.dataset.id
-            const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/speak?productId=${productId}`)
+            const result = await fetch(`${API_BASE_URL}/shop/speak?productId=${productId}`)
             const audioBlob = await result.blob()
             const audioUrl = URL.createObjectURL(audioBlob)
             new Audio(audioUrl).play()

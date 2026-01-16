@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../../util/config.js"
 import renderProducts from "../utils/renderProducts.js"
 const token = localStorage.getItem('token')
 const params = new URLSearchParams(window.location.search)
@@ -7,7 +8,7 @@ console.log(from)
 
 const getUserInfo = async () => {
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/user-info?userId=${requestedUserId}`, {
+        const result = await fetch(`${API_BASE_URL}/shop/user-info?userId=${requestedUserId}`, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token

@@ -1,5 +1,5 @@
 import showErrors from "../errors.js"
-
+import { API_BASE_URL } from "../../../util/config.js"
 const params = new URLSearchParams(window.location.search)
 const prodId = params.get('prodId')
 const token = localStorage.getItem('token')
@@ -11,7 +11,7 @@ const fetchEditProduct = async () => {
         const formData = new FormData(form); // raccoglie automaticamente tutti i campi del form, inclusi i file
         formData.append('prodId', prodId)
         console.log(formData)
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/admin/edit-product`, {
+        const result = await fetch(`${API_BASE_URL}/admin/edit-product`, {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -51,7 +51,7 @@ const displayCurrentValues = (product) => {
 const getCurrentValues = async () => {
     try {
         console.log(prodId)
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/admin/edit-product?prodId=${prodId}`, {
+        const result = await fetch(`${API_BASE_URL}/admin/edit-product?prodId=${prodId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

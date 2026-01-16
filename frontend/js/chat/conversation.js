@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../../util/config.js"
 const token = localStorage.getItem('token')
 let chatArray
 let chatId
@@ -14,7 +15,7 @@ let receiverName
 // POST nuova conversazione
 const postConversation = async () => {
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/chat/post`, {
+        const result = await fetch(`${API_BASE_URL}/chat/post`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,7 +36,7 @@ const postConversation = async () => {
 // GET chat esistente
 const getChat = async () => {
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/chat/get?chatId=${chatId}`, {
+        const result = await fetch(`${API_BASE_URL}/chat/get?chatId=${chatId}`, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token

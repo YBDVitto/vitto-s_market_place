@@ -1,5 +1,5 @@
 import showErrors from "../errors.js"
-
+import { API_BASE_URL } from "../../../util/config.js"
 const getTokenFromURL = () => {
     const params = new URLSearchParams(window.location.search)
     return params.get('token')
@@ -10,7 +10,7 @@ const fetchNewPassword = async () => {
     const token = getTokenFromURL()
 
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/auth/new-password`, {
+        const result = await fetch(`${API_BASE_URL}/auth/new-password`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

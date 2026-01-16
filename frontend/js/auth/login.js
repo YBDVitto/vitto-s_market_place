@@ -1,10 +1,10 @@
 import showErrors from "../errors.js"
-
+import { API_BASE_URL } from "../../../util/config.js"
 const fetchLogin = async () => {
     const email = document.getElementById("email")
     const password = document.getElementById("password")
     try {
-        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/auth/login', {
+        const result = await fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

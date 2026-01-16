@@ -1,9 +1,11 @@
+import { API_BASE_URL } from "../../../util/config"
+
 const token = localStorage.getItem('token')
 
 export const fetchPayment = async (price, checkoutId, cartId) => {
     try {
         console.log(price)
-        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/pay', {
+        const result = await fetch(`${API_BASE_URL}/shop/pay`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,7 +31,7 @@ const paymentSuccess = async () => {
     const session_id = params.get('session_id')
     const checkoutId = params.get('checkoutId')
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/pay/success?session_id=${session_id}&checkoutId=${checkoutId}`, {
+        const result = await fetch(`${API_BASE_URL}/shop/pay/success?session_id=${session_id}&checkoutId=${checkoutId}`, {
             method: 'GET'
         })
         const data = await result.json()
@@ -57,7 +59,7 @@ const paymentFail = async () => {
     const params = new URLSearchParams(window.location.search)
     const checkoutId = params.get('checkoutId')
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/pay/fail?checkoutId=${checkoutId}`, {
+        const result = await fetch(`${API_BASE_URL}/shop/pay/fail?checkoutId=${checkoutId}`, {
             method: 'GET'
         })
         const data = await result.json()

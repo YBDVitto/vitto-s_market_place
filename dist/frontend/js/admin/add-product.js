@@ -1,11 +1,12 @@
 import showErrors from "../errors.js";
+import { API_BASE_URL } from "../../../util/config.js"
 
 const fetchAddProduct = async () => {
     const form = document.getElementById("form-submit")
     const formData = new FormData(form); // raccoglie automaticamente tutti i campi del form, inclusi i file
     const token = localStorage.getItem('token')
     try {
-        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/admin/add-product', {
+        const result = await fetch(`${API_BASE_URL}/admin/add-product`, {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token

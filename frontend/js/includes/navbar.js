@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../../util/config.js"
 let token = localStorage.getItem('token')
 console.log('token iniziale: ', token)
 
@@ -7,7 +8,7 @@ export const renderNavbar = async () => {
  if (!navContainer) return;
  
  // --- INIZIO LOGICA JS (NON MODIFICATA) ---
- const res = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/auth/validation-token', {
+ const res = await fetch(`${API_BASE_URL}/auth/validation-token`, {
   method: 'GET',
   headers: {
    'Authorization': 'Bearer ' + token

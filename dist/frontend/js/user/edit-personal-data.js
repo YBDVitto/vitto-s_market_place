@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../../util/config.js'
 import showErrors from '../errors.js'
 
 const token = localStorage.getItem('token')
@@ -63,7 +64,7 @@ const updatePersonalData = async () => {
     const updatedName = document.getElementById('name').value || ''
     const updatedEmail = document.getElementById('email').value || ''
 
-    const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/user/edit-personal-data', {
+    const result = await fetch(`${API_BASE_URL}/user/edit-personal-data`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

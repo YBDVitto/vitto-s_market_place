@@ -1,9 +1,10 @@
+import { API_BASE_URL } from "../../../util/config.js"
 import renderProducts from "./renderProducts.js"
 
 
 const fetchFilteredProducts = async (category) => {
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/filter?category=${category}`, {
+        const result = await fetch(`${API_BASE_URL}/shop/filter?category=${category}`, {
             method: 'GET',
         })
         const data = await result.json()

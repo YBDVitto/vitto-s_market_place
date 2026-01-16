@@ -7,7 +7,7 @@ const fetchSignup = async () => {
     const confirmPassword = document.getElementById('confirmPassword');
 
     try {
-        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/auth/signup', {
+        const result = await fetch(`${API_BASE_URL}/auth/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

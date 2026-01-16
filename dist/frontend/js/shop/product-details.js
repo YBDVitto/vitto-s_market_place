@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../../util/config.js";
 import showErrors from "../errors.js";
 
 const params = new URLSearchParams(window.location.search)
@@ -75,7 +76,7 @@ const productSection = (product) => {
 const fetchProductDetails = async () => {
     try {
         const result = await fetch(
-            `https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/product-details?prodId=${prodId}`,
+            `${API_BASE_URL}/shop/product-details?prodId=${prodId}`,
             { method: 'GET', headers: { 'Content-Type': 'application/json' } }
         )
 

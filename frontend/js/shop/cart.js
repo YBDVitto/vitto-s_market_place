@@ -1,6 +1,7 @@
 import showErrors from "../errors.js";
 import { createCheckout } from "./checkout.js";
 import { fetchPayment } from './payment.js'
+import { API_BASE_URL } from "../../../util/config.js"
 
 const token = localStorage.getItem('token')
 
@@ -12,7 +13,7 @@ export const setCheckoutState = (state) => {
 
 const updateQuantity = async (quantity, id) => {
     try {
-        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/cart/update', {
+        const result = await fetch(`${API_BASE_URL}/shop/cart/update`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +33,7 @@ const updateQuantity = async (quantity, id) => {
 
 const deleteProduct = async (itemId) => {
     try {
-        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/cart/delete', {
+        const result = await fetch(`${API_BASE_URL}/shop/cart/delete`, {
             method: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + token,
@@ -208,7 +209,7 @@ export const renderValues = (data) => {
 
 export const addToCart = async (productId) => {
     try {
-        const result = await fetch ('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/cart/add', {
+        const result = await fetch (`${API_BASE_URL}/shop/cart/add`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -226,7 +227,7 @@ export const addToCart = async (productId) => {
 
 export const getCart = async () => {
     try {
-        const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/cart', {
+        const result = await fetch(`${API_BASE_URL}/shop/cart`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token

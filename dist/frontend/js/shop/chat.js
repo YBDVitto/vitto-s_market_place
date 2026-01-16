@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../../util/config.js'
 import renderUsers from '../utils/renderUsers.js'
 
 const token = localStorage.getItem('token')
@@ -20,7 +21,7 @@ searchResults.className = `
 input.addEventListener('input', async () => {
     const inputText = input.value
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/shop/search?user=${inputText}`, {
+        const result = await fetch(`${API_BASE_URL}/shop/search?user=${inputText}`, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token

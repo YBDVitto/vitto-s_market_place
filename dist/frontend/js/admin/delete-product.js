@@ -1,12 +1,12 @@
 import showErrors from "../errors.js"
-
+import { API_BASE_URL } from "../../../util/config.js"
 const params = new URLSearchParams(window.location.search)
 const prodId = params.get('prodId')
 const token = localStorage.getItem('token')
 
 const fetchDeleteProduct = async (prodId) => {
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/admin/delete-product`, {
+        const result = await fetch(`${API_BASE_URL}/admin/delete-product`, {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token,
@@ -100,7 +100,7 @@ const productSection = (product) => {
 
 const getProductToDelete = async () => {
     try {
-        const result = await fetch(`https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/admin/delete-product?prodId=${prodId}`, {
+        const result = await fetch(`${API_BASE_URL}/admin/delete-product?prodId=${prodId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../../util/config.js"
 import showErrors from "../errors.js"
 import { editPersonalData } from "./edit-personal-data.js"
 const token = localStorage.getItem('token')
@@ -67,7 +68,7 @@ const renderValues = (user) => {
 
 
 const fetchUser = async () => {
-    const result = await fetch('https://jjtd4cc3icl3gqbugqmw63m2xq0mxohx.lambda-url.us-east-1.on.aws/user/profile', {
+    const result = await fetch(`${API_BASE_URL}/user/profile`, {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + token
