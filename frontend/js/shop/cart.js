@@ -1,7 +1,7 @@
 import showErrors from "../errors.js";
 import { createCheckout } from "./checkout.js";
 import { fetchPayment } from './payment.js'
-import { API_BASE_URL } from "../../../util/config.js"
+import { API_BASE_URL } from "../utils/config.js"
 
 const token = localStorage.getItem('token')
 

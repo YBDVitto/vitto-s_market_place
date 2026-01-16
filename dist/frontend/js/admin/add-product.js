@@ -1,5 +1,5 @@
 import showErrors from "../errors.js";
-import { API_BASE_URL } from "../../../util/config.js"
+import { API_BASE_URL } from "../utils/config.js"
 
 const fetchAddProduct = async () => {
     const form = document.getElementById("form-submit")

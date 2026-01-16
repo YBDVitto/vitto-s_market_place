@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "../../../util/config.js"
+import { API_BASE_URL } from "../utils/config.js"
 import renderProducts from "../utils/renderProducts.js"
 const token = localStorage.getItem('token')
 const params = new URLSearchParams(window.location.search)

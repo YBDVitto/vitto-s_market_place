@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "../../../util/config"
+import { API_BASE_URL } from "../utils/config.js"
 
 const token = localStorage.getItem('token')
 

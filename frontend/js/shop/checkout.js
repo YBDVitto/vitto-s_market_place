@@ -1,5 +1,5 @@
 
-import { API_BASE_URL } from '../../../util/config.js'
+import { API_BASE_URL } from '../utils/config.js'
 import showErrors from '../errors.js'
 import { renderValues, setCheckoutState } from './cart.js'
 

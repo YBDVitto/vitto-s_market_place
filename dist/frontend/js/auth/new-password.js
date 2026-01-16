@@ -1,5 +1,5 @@
 import showErrors from "../errors.js"
-import { API_BASE_URL } from "../../../util/config.js"
+import { API_BASE_URL } from "../utils/config.js"
 const getTokenFromURL = () => {
     const params = new URLSearchParams(window.location.search)
     return params.get('token')

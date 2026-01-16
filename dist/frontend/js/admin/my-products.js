@@ -1,5 +1,5 @@
 import showErrors from "../errors.js"
-import { API_BASE_URL } from "../../../util/config.js"
+import { API_BASE_URL } from "../utils/config.js"
 const renderProducts = async (products) => {
     const grid = document.getElementById("product-grid")
     grid.innerHTML = ''

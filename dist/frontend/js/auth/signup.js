@@ -1,5 +1,5 @@
 import showErrors from '../errors.js'
-
+import { API_BASE_URL } from "../utils/config.js"
 
 const fetchSignup = async () => {
     const email = document.getElementById('email');
