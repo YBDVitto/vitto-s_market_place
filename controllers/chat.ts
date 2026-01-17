@@ -9,7 +9,7 @@ import { Op } from 'sequelize'
 
 export const postChat = async (req: AuthRequest, res: Response, next: NextFunction) => {
     const receiverId = req.body.receiverId
-    const senderId = req.user.id
+    const senderId = req.user?.id
     console.log('id: ' + receiverId + senderId)
     try {
         const receiverUser = await User.findByPk(receiverId)

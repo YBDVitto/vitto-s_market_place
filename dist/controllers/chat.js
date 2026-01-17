@@ -4,7 +4,7 @@ import Message from '../models/Message.js';
 import { Op } from 'sequelize';
 export const postChat = async (req, res, next) => {
     const receiverId = req.body.receiverId;
-    const senderId = req.user.id;
+    const senderId = req.user?.id;
     console.log('id: ' + receiverId + senderId);
     try {
         const receiverUser = await User.findByPk(receiverId);

@@ -32,7 +32,7 @@ export const getPublicHomepageLogged = async (req, res, next) => {
     const products = await Product.findAll({
         where: {
             userId: {
-                [Op.ne]: req.user.id // Op.ne = not equal
+                [Op.ne]: req.user?.id // Op.ne = not equal
             }
         }
     });
@@ -77,7 +77,7 @@ export const postAddToCart = async (req, res, next) => {
                 error: 'No product found.'
             });
         }
-        const user = await User.findByPk(req.user.id);
+        const user = await User.findByPk(req.user?.id);
         if (!user) {
             return res.status(401).json({
                 error: 'Unauthorized action.'
@@ -123,7 +123,7 @@ export const getCart = async (req, res, next) => {
         const user = req.user;
         const cart = await Cart.findOne({
             where: {
-                userId: user.id
+                userId: user?.id
             },
             include: [
                 {
@@ -208,27 +208,45 @@ export const deleteFromCart = async (req, res, next) => {
 };
 export const getFilteredProducts = async (req, res, next) => {
     const category = req.query.category;
-    console.log(category);
-    const requestUserId = req.user.id;
-    console.log(requestUserId);
+    const requestUserId = req.user ? req.user.id : null;
+    const authHeader = req.get('Authorization');
+    const isLogged = authHeader ? true : false;
     try {
-        const products = await Product.findAll({
-            where: {
-                category: category,
-                userId: {
-                    [Op.ne]: requestUserId
+        let products;
+        if (isLogged) {
+            products = await Product.findAll({
+                where: {
+                    category: category,
+                    userId: {
+                        [Op.ne]: requestUserId
+                    }
                 }
-            }
-        });
-        console.log('lunghezza array prodotti filtrati: ', products.length);
-        if (products.length === 0) {
+            });
+        }
+        else {
+            products = await Product.findAll({
+                where: {
+                    category: category
+                }
+            });
+        }
+        const productsWithUsers = await Promise.all(products.map(async (product) => {
+            const userId = product.userId;
+            const user = await User.findByPk(userId);
+            const createdBy = user?.name;
+            return {
+                ...product.toJSON(),
+                createdBy
+            };
+        }));
+        if (productsWithUsers.length === 0) {
             return res.status(400).json({
                 error: 'No products found!'
             });
         }
         return res.status(200).json({
             message: 'Filtered products fetched successfully.',
-            products: products,
+            products: productsWithUsers,
             category: category
         });
     }
@@ -239,7 +257,7 @@ export const getFilteredProducts = async (req, res, next) => {
 export const postCreateCheckout = async (req, res, next) => {
     const cartId = req.body.cartId;
     try {
-        const user = await User.findByPk(req.user.id);
+        const user = await User.findByPk(req.user?.id);
         if (!user) {
             return res.status(501).json({
                 error: 'Unauthorized'
@@ -385,7 +403,6 @@ export const postPaymentSuccess = async (req, res, next) => {
     try {
         const session_id = req.query.session_id;
         const checkoutId = req.query.checkoutId;
-        console.log('llamame my love');
         // uso la mia istanza stripe per recuperare la sessione
         const session = await stripe.checkout.sessions.retrieve(session_id);
         if (!session) {
@@ -466,7 +483,7 @@ export const getSearchedUser = async (req, res, next) => {
             }
         });
         const filteredUsers = users.filter(user => {
-            return user.id != req.user.id;
+            return user.id != req.user?.id;
         });
         console.log(filteredUsers);
         if (filteredUsers.length === 0) {
@@ -506,10 +523,10 @@ export const getUserInfo = async (req, res, next) => {
                 [Op.or]: [
                     {
                         user1Id: userId,
-                        user2Id: req.user.id,
+                        user2Id: req.user?.id,
                     },
                     {
-                        user1Id: req.user.id,
+                        user1Id: req.user?.id,
                         user2Id: userId
                     }
                 ]
@@ -517,7 +534,7 @@ export const getUserInfo = async (req, res, next) => {
         });
         if (!chat) {
             chat = await Chat.create({
-                user1Id: req.user.id,
+                user1Id: req.user?.id,
                 user2Id: userId
             });
         }

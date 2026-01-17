@@ -7,7 +7,7 @@ import getErrors from './errors.js'
 export const postAddProduct = async (req: AuthRequest, res: Response, next: NextFunction) => {
     if(getErrors(req, res)) return
     try {
-        const userId = req.user.id
+        const userId = req.user?.id
         if(!userId) {
             return res.status(401).json({
                 message: 'Unauthorized'
@@ -21,7 +21,7 @@ export const postAddProduct = async (req: AuthRequest, res: Response, next: Next
             })
         }
         console.log(file)
-        console.log(req.user.id)
+        console.log(req.user?.id)
         const imageUrl = await uploadToS3(file.buffer, file.originalname, file.mimetype)
         if(imageUrl) {
             const newProduct = await Product.create({
@@ -51,7 +51,7 @@ export const postAddProduct = async (req: AuthRequest, res: Response, next: Next
 export const postEditProduct = async (req: AuthRequest, res: Response, next: NextFunction) => {
     if(getErrors(req, res)) return
     try {
-        const userId = req.user.id
+        const userId = req.user?.id
         if(!userId) {
             return res.status(400).json({
                 message: 'Unauthorized'
@@ -97,7 +97,7 @@ export const getEditProduct = async (req: AuthRequest, res: Response, next: Next
         const product = await Product.findOne({
             where: {
                 id: prodId,
-                userId: req.user.id
+                userId: req.user?.id
             }
         })
         if(!product) {
@@ -121,7 +121,7 @@ export const getDeleteProduct = async (req: AuthRequest, res: Response, next: Ne
         const product = await Product.findOne({
             where: {
                 id: prodId,
-                userId: req.user.id
+                userId: req.user?.id
             }
         })
         if(!product) {
@@ -143,7 +143,7 @@ export const postDeleteProduct = async (req: AuthRequest, res: Response, next: N
     if(getErrors(req, res)) return
     try {
         const prodId = req.body.prodId
-        const userId = req.user.id
+        const userId = req.user?.id
         const product = await Product.findOne({
             where: {
                 id: prodId,

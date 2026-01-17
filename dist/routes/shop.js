@@ -1,6 +1,7 @@
 import express from 'express';
 import { getPublicHomepage, getPublicHomepageLogged, getProductDetails, postAddToCart, getCart, patchUpdateQuantity, deleteFromCart, getFilteredProducts, postCreateCheckout, getCheckout, postPayment, postPaymentSuccess, postPaymentFail, getSpeakDescription, getSearchedUser, getUserInfo } from '../controllers/shop.js';
 import isAuth from '../middleware/is-auth.js';
+import optionalAuth from '../middleware/optional-auth.js';
 import { withAuth } from './withAuth.js';
 const router = express.Router();
 router.get('/public-homepage', getPublicHomepage);
@@ -10,7 +11,7 @@ router.post('/cart/add', isAuth, withAuth(postAddToCart));
 router.patch('/cart/update', isAuth, withAuth(patchUpdateQuantity));
 router.delete('/cart/delete', isAuth, withAuth(deleteFromCart));
 router.get('/cart', isAuth, withAuth(getCart));
-router.get('/filter', isAuth, withAuth(getFilteredProducts));
+router.get('/filter', optionalAuth, withAuth(getFilteredProducts));
 router.post('/checkout', isAuth, withAuth(postCreateCheckout));
 router.get('/checkout', isAuth, withAuth(getCheckout));
 router.post('/pay', isAuth, withAuth(postPayment));

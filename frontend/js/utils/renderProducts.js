@@ -8,6 +8,7 @@ let myId
 const renderProducts = async (products, fromUserPage) => {
     const grid = document.getElementById("product-grid")
     console.log(fromUserPage)
+    console.log("products in renderProducts file: ", products)
 
     // GRID LAYOUT (2 prodotti per riga)
     grid.className = `

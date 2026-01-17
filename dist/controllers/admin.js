@@ -5,7 +5,7 @@ export const postAddProduct = async (req, res, next) => {
     if (getErrors(req, res))
         return;
     try {
-        const userId = req.user.id;
+        const userId = req.user?.id;
         if (!userId) {
             return res.status(401).json({
                 message: 'Unauthorized'
@@ -19,7 +19,7 @@ export const postAddProduct = async (req, res, next) => {
             });
         }
         console.log(file);
-        console.log(req.user.id);
+        console.log(req.user?.id);
         const imageUrl = await uploadToS3(file.buffer, file.originalname, file.mimetype);
         if (imageUrl) {
             const newProduct = await Product.create({
@@ -50,7 +50,7 @@ export const postEditProduct = async (req, res, next) => {
     if (getErrors(req, res))
         return;
     try {
-        const userId = req.user.id;
+        const userId = req.user?.id;
         if (!userId) {
             return res.status(400).json({
                 message: 'Unauthorized'
@@ -97,7 +97,7 @@ export const getEditProduct = async (req, res, next) => {
         const product = await Product.findOne({
             where: {
                 id: prodId,
-                userId: req.user.id
+                userId: req.user?.id
             }
         });
         if (!product) {
@@ -120,7 +120,7 @@ export const getDeleteProduct = async (req, res, next) => {
         const product = await Product.findOne({
             where: {
                 id: prodId,
-                userId: req.user.id
+                userId: req.user?.id
             }
         });
         if (!product) {
@@ -142,7 +142,7 @@ export const postDeleteProduct = async (req, res, next) => {
         return;
     try {
         const prodId = req.body.prodId;
-        const userId = req.user.id;
+        const userId = req.user?.id;
         const product = await Product.findOne({
             where: {
                 id: prodId,

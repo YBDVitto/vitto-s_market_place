@@ -2,7 +2,7 @@ import User from '../models/User.js';
 import getErrors from './errors.js';
 export const getProfile = async (req, res, next) => {
     try {
-        const userId = req.user.id;
+        const userId = req.user?.id;
         const user = await User.findByPk(userId);
         if (!user) {
             return res.status(500).json({
@@ -29,7 +29,7 @@ export const postPersonalDataUpdate = async (req, res, next) => {
         return;
     try {
         const { updatedName, updatedEmail } = req.body;
-        const user = await User.findByPk(req.user.id);
+        const user = await User.findByPk(req.user?.id);
         if (!user) {
             return res.status(401).json({
                 error: 'Unauthorized'

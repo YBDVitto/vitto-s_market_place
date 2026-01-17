@@ -12,7 +12,7 @@ const fetchFilteredProducts = async (category) => {
             }
         })
         const data = await result.json()
-        
+        console.log(data.products)
         renderProducts(data.products, false)
         
     } catch (err) {
