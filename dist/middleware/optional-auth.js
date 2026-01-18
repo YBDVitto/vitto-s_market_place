@@ -12,12 +12,8 @@ export default async (req, res, next) => {
         decodedToken = jwt.verify(token, env.SECRET_PSW);
     }
     catch (err) {
-        if (err.name === 'TokenExpiredError') {
-            return res.status(401).json({ message: 'Token expired. Please log in again.' });
-        }
-        return res.status(401).json({
-            message: 'Token is not correct.'
-        });
+        console.log('Token is invalid or expired, proceed as host.');
+        return next();
     }
     if (!decodedToken) {
         return next(); // se il token è invalido tratto l'utente con ospite
