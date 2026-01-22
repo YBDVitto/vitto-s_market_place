@@ -19,11 +19,8 @@ export default async (req, res, next) => {
         return next(); // se il token è invalido tratto l'utente con ospite
     }
     const user = await User.findByPk(decodedToken.userId);
-    if (!user) {
-        return res.status(404).json({
-            message: 'User not found.'
-        });
+    if (user) {
+        req.user = user;
     }
-    req.user = user;
     next();
 };
