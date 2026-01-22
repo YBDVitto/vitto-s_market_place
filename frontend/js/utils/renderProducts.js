@@ -28,11 +28,11 @@ const renderProducts = async (products, fromUserPage) => {
             </label>
             <select id="filter-category" 
                     class="border border-neutral-300 rounded-lg px-3 py-2 text-sm">
-                <option value="CLOTHES -> MAN">Clothes → Man</option>
-                <option value="CLOTHES -> WOMEN">Clothes → Women</option>
-                <option value="CLOTHES -> CHILDREN">Clothes → Children</option>
-                <option value="ELECTRONICS">Electronics</option>
-                <option value="OTHER">Other</option>
+                <option value="Clothes -> Man">Clothes → Man</option>
+                <option value="Clothes -> Women">Clothes → Women</option>
+                <option value="Clothes -> Children">Clothes → Children</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Other">Other</option>
             </select>
             <button id="btn-filter"
                     class="px-4 py-2 rounded-lg bg-neutral-900 text-white text-sm hover:bg-neutral-800 transition">

@@ -6,7 +6,7 @@ const fetchFilteredProducts = async (category) => {
     console.log('ciaooo')
     try {
         console.log(category)
-        const result = await fetch(`${API_BASE_URL}/shop/filter?category=${'Clothes -> Man'}`, {
+        const result = await fetch(`${API_BASE_URL}/shop/filter?category=${category}`, {
             method: 'GET',
             headers: {
                 Authorization: 'Bearer ' + token
