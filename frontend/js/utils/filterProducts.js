@@ -13,7 +13,7 @@ const fetchFilteredProducts = async (category) => {
             }
         })
         const data = await result.json()
-        console.log(data.products)
+        console.log('prodotti che vengon fetchati da filterProducts: ', data.products)
         renderProducts(data.products, false)
         
     } catch (err) {

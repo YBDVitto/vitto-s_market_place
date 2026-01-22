@@ -3,6 +3,7 @@ import renderProducts from "./renderProducts.js"
 const token = localStorage.getItem('token')
 
 const fetchFilteredProducts = async (category) => {
+    console.log('ciaooo')
     try {
         console.log(category)
         const result = await fetch(`${API_BASE_URL}/shop/filter?category=${category}`, {
@@ -12,7 +13,7 @@ const fetchFilteredProducts = async (category) => {
             }
         })
         const data = await result.json()
-        console.log(data.products)
+        console.log('prodotti che vengon fetchati da filterProducts: ', data.products)
         renderProducts(data.products, false)
         
     } catch (err) {
