@@ -152,7 +152,7 @@ const renderProducts = async (products, fromUserPage) => {
     document.querySelectorAll('.polly-btn').forEach(button => {
         button.addEventListener('click', async (e) => {
             const productId = e.target.dataset.id
-            const result = await fetch(`${API_BASE_URL}/shop/speak?productId=${productId}`)
+            const result = await fetch(`${API_BASE_URL}/shop/speak?productId=${productId}&t=${new Date().getTime()}`)
             const audioBlob = await result.blob()
             const audioUrl = URL.createObjectURL(audioBlob)
             new Audio(audioUrl).play()
