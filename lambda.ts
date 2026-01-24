@@ -5,7 +5,9 @@ import sequelize from './util/database.js'
 // credo l'adattatore
 // avoolgo la mia app express dentro una funziona compatibile con il formato lambda
 
-const serverlessHandler = serverless(app)
+const serverlessHandler = serverless(app, {
+    binary: ['audio/mpeg', 'audio/mp3', 'application/octet-stream']
+})
 
 
 //event contiene i dati della richiesta

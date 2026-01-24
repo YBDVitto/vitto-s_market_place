@@ -16,7 +16,6 @@ import { Server } from 'socket.io';
 import http from 'http';
 import { env } from './env.js';
 import jwt from 'jsonwebtoken';
-let isSynced = false;
 // Serve per convertire un file URL in percorso locale
 import { fileURLToPath } from 'url';
 // Serve per ottenere il nome della cartella (come __dirname)
