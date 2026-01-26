@@ -1,6 +1,7 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses'
 import { env } from '../env.js'
 
+const enviroment = env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://vitto-s-market-place.vercel.app/'
 const SES_CONFIG = {
     region: env.AWS_SES_REGION,
     credentials: {
@@ -34,7 +35,7 @@ export const sendEmail = async (
                             Inizia subito a vendere o acquistare nuovi prodotti sulla nostra piattaforma.
                         </p>
                         <div style="margin-top:30px;">
-                            <a href="http://localhost:3000/auth/login" 
+                            <a href="${enviroment}" 
                             style="background:#4CAF50; color:#fff; padding:12px 20px; text-decoration:none; border-radius:4px; font-size:16px;">
                             Vai al Login
                             </a>
@@ -81,7 +82,7 @@ export const sendEmail = async (
                         <p style="font-size:14px; color:#777;">
                             If you did not request a password reset, please ignore this email.
                         </p>
-                        <p>Click this <a href="http://localhost:3000/html/auth/new-password.html?token=${token}">link</a> to create a new password.</p>
+                        <p>Click this <a href="${enviroment}/html/auth/new-password.html?token=${token}">link</a> to create a new password.</p>
                         </td>
                     </tr>
                 </table>
