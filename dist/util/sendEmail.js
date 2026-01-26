@@ -1,6 +1,6 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { env } from '../env.js';
-const enviroment = env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://vitto-s-market-place.vercel.app/';
+const enviroment = env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://vitto-s-market-place.vercel.app';
 const SES_CONFIG = {
     region: env.AWS_SES_REGION,
     credentials: {
