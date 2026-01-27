@@ -59,33 +59,33 @@ export const postEditProduct = async (req: AuthRequest, res: Response, next: Nex
         }
         const { title, description, price, prodId, category } = req.body
         const file = req.file
-        if(!file) {
-            return res.status(400).json({
-                message: 'Image file is required.'
-            })
-        }
         const product = await Product.findByPk(prodId)
         if(!product) {
             return res.status(404).json({message: "Product not found!"})
         }
-        await deleteFromS3(product.image)
-        const imageUrl = await uploadToS3(file.buffer, file.originalname, file.mimetype)
-        if(imageUrl) {
-            product.title = title
-            product.category = category
-            product.description = description
-            product.price = price
-            product.image = imageUrl
-            await product.save()
-            return res.status(200).json({
-                message: 'Product updated successfully',
-                product: product
-            })
-        } else {
-            return res.status(400).json({
-                imageError: 'Inappropriate content detected, please upload a different file.'
-            })
+        if(file) {
+            await deleteFromS3(product.image)
+            const imageUrl = await uploadToS3(file.buffer, file.originalname, file.mimetype)
+                
+            if(imageUrl) {
+                product.image = imageUrl
+            } else {
+                return res.status(400).json({
+                    imageError: 'Inappropriate content detected, please upload a different file.'
+                })
+            }
         }
+        product.title = title
+        product.category = category
+        product.description = description
+        product.price = price
+
+        await product.save()
+
+        return res.status(200).json({
+            message: 'Product updated successfully',
+            product: product
+        })
     } catch (err) {
         next(err)
     }

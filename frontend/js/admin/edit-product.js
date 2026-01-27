@@ -6,7 +6,10 @@ const token = localStorage.getItem('token')
 
 
 const fetchEditProduct = async () => {
+    const submitBtn = document.querySelector('button[type="submit"]')
     try {
+        submitBtn.disabled = true
+        submitBtn.innerHTML = 'Saving changes...'
         const form = document.getElementById("form-submit")
         const formData = new FormData(form); // raccoglie automaticamente tutti i campi del form, inclusi i file
         formData.append('prodId', prodId)
@@ -39,12 +42,17 @@ const fetchEditProduct = async () => {
 
 const displayCurrentValues = (product) => {
     const title = document.getElementById('title')
-    // const image
     const price = document.getElementById('price')
     const description = document.getElementById('description')
     title.value = product.title
     price.value = product.price
     description.value = product.description
+    const preview = document.getElementById('current-image-preview')
+    if(product.image) {
+        preview.src = product.image
+        preview.classList.remove('hidden')
+    }
+    
     return
 }
 

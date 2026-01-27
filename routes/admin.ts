@@ -69,12 +69,7 @@ router.post('/edit-product',
             .notEmpty().withMessage('Title is required').bail()
             .isAlphanumeric('en-US', {ignore: ' '}).withMessage('Title must contain only letters and numbers.').bail()
             .isLength({ max: 30 }).withMessage('Title can be no longer than 30 characters.').bail()
-            .custom(async (value) => {
-                const productDocs = await Product.findOne({ where: { title: value } })
-                if (productDocs) {
-                    return Promise.reject('Title already taken, please try a different one.')
-                }
-            }),
+        ,
         check('price')
             .notEmpty().withMessage('Price is required').bail()
             .isNumeric().withMessage('Price can be either an integer or a float.')
