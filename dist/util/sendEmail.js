@@ -71,7 +71,7 @@ export const sendEmail = async (recipientEmail, name, type, token = '') => {
                         <p style="font-size:14px; color:#777;">
                             If you did not request a password reset, please ignore this email.
                         </p>
-                        <p>Click this <a href="${enviroment}/html/auth/new-password.html?token=${token}">link</a> to create a new password.</p>
+                        <p>Click this <a href="${enviroment}/html/auth/new-password?token=${token}">link</a> to create a new password.</p>
                         </td>
                     </tr>
                 </table>
