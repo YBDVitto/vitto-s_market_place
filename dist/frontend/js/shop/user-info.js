@@ -28,6 +28,7 @@ const getUserInfo = async () => {
         nameElement.className = 'text-3xl font-bold text-gray-800'
         userContainer.appendChild(nameElement)
 
+
         // Chat link
         const chatLink = document.createElement('a')
         chatLink.href = `/html/chat/conversation?userId=${data.user.id}`

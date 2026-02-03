@@ -542,7 +542,7 @@ export const getUserInfo = async (req: AuthRequest, res: Response, next: NextFun
         })
         if(!userProducts || userProducts.length === 0) {
             return res.status(400).json({
-                message: 'No products beloning to this user.'
+                message: 'No products belong to this user.'
             })
         }
         let chat = await Chat.findOne({
