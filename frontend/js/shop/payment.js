@@ -12,7 +12,7 @@ export const fetchPayment = async (price, checkoutId, cartId) => {
                 'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify({
-                price: price.toFixed(2),
+                price: parseFloat(Number(price).toFixed(2)),
                 checkoutId: checkoutId,
                 cartId: cartId
             })
