@@ -27,5 +27,4 @@ Due to management costs and security related to the usage of AWS accounts, pleas
 **1. Email (AWS SES Sandbox)**: Email sending system is in Sandbox mode. Consequently, emails (login, signup, reset password) can be sent **only to verified addresses**. If you'd like to test this feature, please contact me at vittobervr@gmail.com so that I can add your email to the whitelist.
 **2. Chat system (Weksocket)**: The chat between you and another user can be accessed via "Chat" button in the UI. However, Lambda is stateless, therefore does not natively support persistent WebSocke connections. Anyways, you can take at look a the code if you wish.
 **3. S3** The uploaded images reside in S3, but get automatically eliminated from it whenever the product get deleted by the owner.
-
-
+**4. Performance (Cold Starts):** Due to the serverless nature of the backend (AWS Lambda), the first request after a period of inactivity may take a few seconds to process as the function initializes. This is a standard behavior of the AWS Free Tier.
