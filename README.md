@@ -18,6 +18,7 @@ https://vitto-s-market-place.vercel.app/
 - Products management: CRUD (Create, Read, Update, Delete) enabled for authenticated users.
 - User Experience: Responsive UI with immediate feedback through toast.
 - Improved UI by enabling users to listen in real time to a product's description thanks to AWS Polly.
+- Stripe integration to enable test payments.
 
 
 ## ⚠️ Technical Notes and Boundaries (Sandbox environment)
