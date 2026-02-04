@@ -12,7 +12,7 @@ export const fetchPayment = async (price, checkoutId, cartId) => {
                 'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify({
-                price: price.toFixed(2),
+                price: parseFloat(Number(price).toFixed(2)),
                 checkoutId: checkoutId,
                 cartId: cartId
             })
@@ -46,13 +46,6 @@ const paymentSuccess = async () => {
     } catch (err) {
         console.log(err)
     }
-    const container = document.getElementById('container')
-    const btn = document.createElement('button')
-    btn.innerText = 'Return to home page'
-    container.appendChild(btn)
-    btn.addEventListener('click', () => {
-        window.location.href = '/index'
-    })
 }
 
 const paymentFail = async () => {

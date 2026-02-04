@@ -46,13 +46,6 @@ const paymentSuccess = async () => {
     } catch (err) {
         console.log(err)
     }
-    const container = document.getElementById('container')
-    const btn = document.createElement('button')
-    btn.innerText = 'Return to home page'
-    container.appendChild(btn)
-    btn.addEventListener('click', () => {
-        window.location.href = '/index'
-    })
 }
 
 const paymentFail = async () => {
