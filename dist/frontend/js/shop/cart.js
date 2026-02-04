@@ -124,7 +124,7 @@ export const renderValues = (data) => {
             'flex flex-col justify-between items-end'
 
         const priceEl = document.createElement('p')
-        priceEl.textContent = `€${price}`
+        priceEl.textContent = `€${price.toFixed(2)}`
         priceEl.className = 'text-xl font-bold text-blue-600'
         actions.appendChild(priceEl)
 
@@ -185,7 +185,7 @@ export const renderValues = (data) => {
         summary.appendChild(amount)
 
         const total = document.createElement('p')
-        total.textContent = `Total price: €${totalPrice}`
+        total.textContent = `Total price: €${totalPrice.toFixed(2)}`
         total.className = 'text-xl font-bold'
         summary.appendChild(total)
 
